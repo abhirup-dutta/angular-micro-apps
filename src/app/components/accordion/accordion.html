@@ -1,0 +1,31 @@
+<h1>Accordion</h1>
+
+<div class="accordion-container">
+  @for(item of accordionItems(); track $index) {
+    <div class="accordion-item">
+      <div class="accordion-header"
+           [ngClass]="{
+            'expanded-header' : item.isExpanded,
+            'closed-header' : !item.isExpanded
+          }"
+           (click)="toggleItem($index)"
+      >
+        <div class="header-title">
+          {{ item.heading }}
+        </div>
+        <div class="header-icon">
+          @if(item.isExpanded) {
+            ▼
+          } @else {
+            ▶
+          }
+        </div>
+      </div>
+      @if (item.isExpanded) {
+        <div class="accordion-description">
+          {{ item.description }}
+        </div>
+      }
+    </div>
+  }
+</div>

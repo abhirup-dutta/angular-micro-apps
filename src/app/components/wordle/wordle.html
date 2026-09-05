@@ -1,0 +1,32 @@
+<h1>Wordle</h1>
+<div>Guess the 5-letter word.</div>
+<div class="board-container">
+  @for (guess of pastGuessList(); track $index) {
+    <div class="wordle-row">
+      @for (char of guess.word.split(''); track $index) {
+        @let letterIdx = $index;
+        <div class="letter-box"
+              [ngClass]="{
+                'letter-box-green' : guess.greenIndices.includes(letterIdx),
+                'letter-box-yellow' : guess.yellowIndices.includes(letterIdx),
+                'letter-box-gray' : guess.grayIndices.includes(letterIdx),
+              }"
+        >
+          {{ char }}
+        </div>
+      }
+    </div>
+  }
+</div>
+<div class="user-input-container">
+  <input type="text"
+         [ngModel]="guessWord()"
+         (ngModelChange)="onPopulateGuess($event)"
+  />
+  <button (click)="onSubmitGuess()">Submit Guess</button>
+</div>
+<div>
+  @if (hasWon()) {
+    <span>{{ "You've Won! The answer was " + answer }}</span>
+  }
+</div>

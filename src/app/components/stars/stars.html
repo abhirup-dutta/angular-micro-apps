@@ -1,0 +1,11 @@
+<h1>Rating System</h1>
+<div>Please rate us!</div>
+
+@for (item of [].constructor(activeCount()); track $index) {
+  <span (click)="onRating($index + 1)">★</span>
+}
+@for (item of [].constructor(inactiveCount()); track $index) {
+  <span (click)="onRating(activeCount() + $index + 1)">☆</span>
+}
+
+<div>{{ "You've rated us " + activeCount() + " stars." }}</div>

@@ -1,0 +1,40 @@
+.accordion-container {
+  min-width: 30rem;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-item {
+  margin: 0.5rem;
+}
+
+.accordion-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  border-radius: 1rem;
+}
+
+.expanded-header {
+  background-color: darkslategrey;
+  color: aliceblue;
+}
+
+.closed-header {
+  background-color: darkgray;
+}
+
+.header-title {
+  margin: 0.8rem;
+}
+
+.header-icon {
+  margin: 0.5rem;
+}
+
+.accordion-description {
+  margin: 1rem;
+}
