@@ -3,6 +3,7 @@ import { Stars } from './components/stars/stars';
 import { Wordle } from './components/wordle/wordle';
 import { Todolist } from './components/todolist/todolist';
 import { Accordion } from './components/accordion/accordion';
+import { ProgressBar } from './components/progress-bar/progress-bar';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'accordion',
     component: Accordion
+  },
+  {
+    path: 'progress-bar',
+    component: ProgressBar
   },
   {
     path: '',

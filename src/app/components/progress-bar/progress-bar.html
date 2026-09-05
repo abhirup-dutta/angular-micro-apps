@@ -1,0 +1,25 @@
+<div>
+  <h2>Progress Bar</h2>
+</div>
+
+<div class="app-content">
+
+  <div class="content-header">
+    {{ "Progress: " + this.progressPercent() + " %" }}
+  </div>
+
+  <div class="bar-container">
+    @for(item of [].constructor(progress()); track $index) {
+      █
+    }
+    @for (item of [].constructor(remaining()); track $index) {
+      ░
+    }
+  </div>
+
+  <div class="footer">
+    <button (click)="onResume()">Start</button>
+    <button (click)="onPause()">Stop</button>
+  </div>
+
+</div>
