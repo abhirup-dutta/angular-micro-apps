@@ -26,7 +26,7 @@ export class Accordion implements OnInit {
     ),
   ]);
 
-  indexTracker = signal<boolean[]>([]);
+  expansionTracker = signal<boolean[]>([]);
 
   ngOnInit() {
     this.initializeIndexTracker();
@@ -34,25 +34,33 @@ export class Accordion implements OnInit {
 
   initializeIndexTracker() {
     this.accordionItems().forEach((item) => {
-      this.indexTracker.update((curArr) => {
+      this.expansionTracker.update((curArr) => {
         return [...curArr, false];
       });
     });
   }
 
   toggleItem(targetIndex: number) {
-    let indexTracker = this.indexTracker();
-    if (this.allowsAnyNumber() === true) {
-      indexTracker[targetIndex] = !indexTracker[targetIndex];
-    } else {
-      indexTracker = [
-        ...indexTracker.map((item, i) => {
-          return i === targetIndex ? !item : false;
-        }),
-      ];
-    }
-    this.indexTracker.update((cur) => {
-      return indexTracker;
+    this.expansionTracker.update((curExpansionTracker) => {
+
+      return curExpansionTracker.map((isAccordionItemExpanded, expansionTrackerIndex) => {
+
+        /*
+         * [1] FIRST CHECK: Target Index
+         * Toggle the expansion/close at the target index, on user-click.
+         *
+         * [2] SECOND CHECK: Other Indices
+         * Do we allow multiple expanded items in the accordion?
+         * If yes, then let the other items be as-is.
+         * On the other hand, if only one item is allowed to be expanded at a time,
+         * then, we force-close the other items, ie, set the Expanded to false.
+         */
+        return (expansionTrackerIndex === targetIndex) ? (!isAccordionItemExpanded) : (
+          (this.allowsAnyNumber()) ? isAccordionItemExpanded : false
+        );
+
+       });
+
     });
   }
 }

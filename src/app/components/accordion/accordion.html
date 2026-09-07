@@ -11,8 +11,8 @@
     <div class="accordion-item">
       <div class="accordion-header"
            [ngClass]="{
-            'expanded-header' : indexTracker()[$index],
-            'closed-header' : !indexTracker()[$index]
+            'expanded-header' : expansionTracker()[$index],
+            'closed-header' : !expansionTracker()[$index]
           }"
            (click)="toggleItem($index)"
       >
@@ -20,14 +20,14 @@
           {{ item.heading }}
         </div>
         <div class="header-icon">
-          @if(indexTracker()[$index]) {
+          @if(expansionTracker()[$index]) {
             ▼
           } @else {
             ▶
           }
         </div>
       </div>
-      @if (indexTracker()[$index]) {
+      @if (expansionTracker()[$index]) {
         <div class="accordion-description">
           {{ item.description }}
         </div>
