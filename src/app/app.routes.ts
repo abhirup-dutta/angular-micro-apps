@@ -8,27 +8,33 @@ import { ProgressBar } from './components/progress-bar/progress-bar';
 export const routes: Routes = [
   {
     path: 'stars',
-    component: Stars
+    component: Stars,
   },
   {
     path: 'wordle',
-    component: Wordle
+    component: Wordle,
   },
   {
     path: 'todolist',
-    component: Todolist
+    component: Todolist,
   },
   {
-    path: 'accordion',
-    component: Accordion
+    path: 'accordion/multiple-open-tabs',
+    component: Accordion,
+    data: { allowsAnyNumber: true },
+  },
+  {
+    path: 'accordion/only-one-open-tab',
+    component: Accordion,
+    data: { allowsAnyNumber: false },
   },
   {
     path: 'progress-bar',
-    component: ProgressBar
+    component: ProgressBar,
   },
   {
     path: '',
     redirectTo: 'stars',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];

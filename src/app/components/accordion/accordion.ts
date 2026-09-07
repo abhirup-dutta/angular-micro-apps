@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, input, OnInit } from '@angular/core';
 import {AccordionItem} from '../shared/types/accordion-item';
 import { NgClass } from '@angular/common';
 
@@ -8,7 +8,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './accordion.html',
   styleUrl: './accordion.scss',
 })
-export class Accordion {
+export class Accordion implements OnInit {
   accordionItems = signal<AccordionItem[]>([
     new AccordionItem(
       'What is Angular?',
@@ -24,10 +24,35 @@ export class Accordion {
     ),
   ]);
 
-  toggleItem(index: number) {
-    this.accordionItems.update((items) => {
-      items[index].toggle();
-      return [...items];
+  allowsAnyNumber = input.required<boolean>();
+
+  indexTracker = signal<boolean[]>([]);
+
+  ngOnInit() {
+    this.initializeIndexTracker();
+  }
+
+  initializeIndexTracker() {
+    this.accordionItems().forEach((item) => {
+      this.indexTracker.update((curArr) => {
+        return [...curArr, false];
+      });
+    });
+  }
+
+  toggleItem(targetIndex: number) {
+    let indexTracker = this.indexTracker();
+    if (this.allowsAnyNumber() === true) {
+      indexTracker[targetIndex] = !indexTracker[targetIndex];
+    } else {
+      indexTracker = [
+        ...indexTracker.map((item, i) => {
+          return i === targetIndex ? !item : false;
+        }),
+      ];
+    }
+    this.indexTracker.update((cur) => {
+      return indexTracker;
     });
   }
 }

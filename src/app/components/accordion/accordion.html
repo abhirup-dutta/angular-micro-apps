@@ -5,8 +5,8 @@
     <div class="accordion-item">
       <div class="accordion-header"
            [ngClass]="{
-            'expanded-header' : item.isExpanded,
-            'closed-header' : !item.isExpanded
+            'expanded-header' : indexTracker()[$index],
+            'closed-header' : !indexTracker()[$index]
           }"
            (click)="toggleItem($index)"
       >
@@ -14,14 +14,14 @@
           {{ item.heading }}
         </div>
         <div class="header-icon">
-          @if(item.isExpanded) {
+          @if(indexTracker()[$index]) {
             ▼
           } @else {
             ▶
           }
         </div>
       </div>
-      @if (item.isExpanded) {
+      @if (indexTracker()[$index]) {
         <div class="accordion-description">
           {{ item.description }}
         </div>
