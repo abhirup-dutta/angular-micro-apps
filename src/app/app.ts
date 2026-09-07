@@ -13,7 +13,8 @@ export class App {
   constructor(private router: Router) {
   }
 
-  goTo(link: string) {
-    this.router.navigate([`/${link}`]);
+  goTo(link: string, navigationData?: string) {
+    const route = navigationData ? `/${link}/${navigationData}` : `/${link}`;
+    this.router.navigate([route]);
   }
 }

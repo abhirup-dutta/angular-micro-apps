@@ -1,4 +1,10 @@
-<h1>Accordion</h1>
+<div class="tab-header">
+  @if (allowsAnyNumber() === true) {
+    <h1>Accordion [Multiple Open]</h1>
+  } @else {
+    <h1>Accordion [Only One Open]</h1>
+  }
+</div>
 
 <div class="accordion-container">
   @for(item of accordionItems(); track $index) {

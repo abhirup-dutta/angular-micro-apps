@@ -9,6 +9,8 @@ import { NgClass } from '@angular/common';
   styleUrl: './accordion.scss',
 })
 export class Accordion implements OnInit {
+  allowsAnyNumber = input.required<boolean>();
+
   accordionItems = signal<AccordionItem[]>([
     new AccordionItem(
       'What is Angular?',
@@ -23,8 +25,6 @@ export class Accordion implements OnInit {
       "In Angular, a signal is a wrapper around a value that can notify interested consumers when that value changes. Introduced to fundamentally modernize Angular's reactivity model, signals provide fine-grained reactivity. This means Angular can track exactly where a piece of state is used and update only that specific part of the UI, rather than checking the entire component tree.",
     ),
   ]);
-
-  allowsAnyNumber = input.required<boolean>();
 
   indexTracker = signal<boolean[]>([]);
 
