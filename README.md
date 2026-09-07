@@ -2,7 +2,13 @@
 
 ## Wordle
 
+<img width="500" alt="screenhot for wordle" src="https://github.com/user-attachments/assets/f2cd404f-4342-4709-8200-51df6be699de" />
+
+
 ## Accordion
+
+<img width="500" alt="screenshot for accordion" src="https://github.com/user-attachments/assets/ff277caa-7674-4ea9-9a45-ca0d2be97810" />
+
 
 # AngularMicroApps - General
 
