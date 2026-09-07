@@ -11,6 +11,7 @@ import { NgClass } from '@angular/common';
 export class Accordion implements OnInit {
   allowsAnyNumber = input.required<boolean>();
 
+  // accordionItems can be an input signal too in order to resuse the component
   accordionItems = signal<AccordionItem[]>([
     new AccordionItem(
       'What is Angular?',

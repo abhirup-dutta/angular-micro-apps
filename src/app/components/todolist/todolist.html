@@ -1,12 +1,14 @@
-<div>
+<div class="micro-app-header">
   <h1>Todo List</h1>
-  <div>
-    <input type="text" placeholder="Add your task"
-           [ngModel]="todoentered()"
-           (ngModelChange)="onEnterTask($event)"
-    />
-    <button (click)="onSubmitTask()">Submit Task</button>
-  </div>
+</div>
+<div class="input-container">
+  <input type="text" placeholder="Add your task"
+         [ngModel]="todoentered()"
+         (ngModelChange)="onEnterTask($event)"
+  />
+  <button (click)="onSubmitTask()">Submit Task</button>
+</div>
+<div class="table-container">
   <table>
     @for (todo of todolist(); track $index) {
       <tr>
@@ -14,10 +16,11 @@
           <span>{{ todolist()[$index] }}</span>
         </td>
         <td>
-          <button (click)="onDeleteTask($index)">Delete</button>
+          <button class="delete-button" (click)="onDeleteTask($index)">Delete</button>
         </td>
       </tr>
     }
   </table>
 </div>
+
 
