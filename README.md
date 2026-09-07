@@ -15,7 +15,7 @@
 <img width="500" alt="screenshot for accordion" src="https://github.com/user-attachments/assets/ff277caa-7674-4ea9-9a45-ca0d2be97810" />
 
 
-# AngularMicroApps - General
+# General
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.4.
 
