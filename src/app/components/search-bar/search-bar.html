@@ -1,0 +1,12 @@
+<div>
+  <form>
+    <input type="search" [formControl]="searchControl">
+  </form>
+</div>
+<div>
+  @for(user of resultUsers(); track user.id) {
+    <div>
+      {{ user.firstName + ' ' + user.lastName }}
+    </div>
+  }
+</div>

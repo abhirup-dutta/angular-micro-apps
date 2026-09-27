@@ -4,6 +4,7 @@ import { Wordle } from './components/wordle/wordle';
 import { Todolist } from './components/todolist/todolist';
 import { Accordion } from './components/accordion/accordion';
 import { ProgressBar } from './components/progress-bar/progress-bar';
+import { SearchBar } from './components/search-bar/search-bar';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'progress-bar',
     component: ProgressBar,
+  },
+  {
+    path: 'search-bar',
+    component: SearchBar,
   },
   {
     path: '',
