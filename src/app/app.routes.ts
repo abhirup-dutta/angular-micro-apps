@@ -5,6 +5,7 @@ import { Todolist } from './components/todolist/todolist';
 import { Accordion } from './components/accordion/accordion';
 import { ProgressBar } from './components/progress-bar/progress-bar';
 import { SearchBar } from './components/search-bar/search-bar';
+import { TrafficLight } from './components/traffic-light/traffic-light';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,10 @@ export const routes: Routes = [
   {
     path: 'search-bar',
     component: SearchBar,
+  },
+  {
+    path: 'traffic-light',
+    component: TrafficLight,
   },
   {
     path: '',
