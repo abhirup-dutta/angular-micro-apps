@@ -1,0 +1,12 @@
+
+<div class="light-post">
+  @for (duration of durationList.entries(); track $index) {
+    <div class="light"
+         [class.grey]="$index != lightIndex()"
+         [class.red]="$index === 0 && lightIndex() === 0"
+         [class.yellow]="$index === 1 && lightIndex() === 1"
+         [class.green]="$index === 2 && lightIndex() === 2"
+    >
+    </div>
+  }
+</div>

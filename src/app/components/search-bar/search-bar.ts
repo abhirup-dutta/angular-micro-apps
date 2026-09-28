@@ -1,6 +1,6 @@
-import { Component, inject, signal } from '@angular/core';
+import  { Component, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, Observable, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,22 +11,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchBar {
   searchControl = new FormControl();
+  users = signal<any>([]);
   http = inject(HttpClient);
-  resultUsers = signal<any>(null);
+  touched = signal<boolean>(false);
 
   ngOnInit() {
-    this.searchControl.valueChanges
-      .pipe(
-        debounceTime(300),
-        distinctUntilChanged(),
-        switchMap((data) => this.search(data)),
-      )
-      .subscribe(res => {
-        this.resultUsers.set(res?.users ?? []);
+    this.searchControl.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(query => this.search(query))
+    ).subscribe(results => {
+        this.users.set(results?.users ?? []);
       });
   }
 
-  search(data: string) {
+  search(data:string) {
+    if(!this.touched()) {
+      this.touched.set(true);
+    }
+    if(this.touched() === true && !data) {
+      return of(null);
+    }
     return this.http.get<any>(`https://dummyjson.com/users/search?q=${data}`);
   }
 }

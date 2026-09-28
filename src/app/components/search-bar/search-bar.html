@@ -4,9 +4,9 @@
   </form>
 </div>
 <div>
-  @for(user of resultUsers(); track user.id) {
+  @for (user of users(); track user.id) {
     <div>
-      {{ user.firstName + ' ' + user.lastName }}
+      {{ user.firstName + " " + user.lastName}}
     </div>
   }
 </div>
